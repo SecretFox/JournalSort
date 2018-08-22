@@ -1,2 +1,2 @@
 # JournalSort
-Sorts mission on journal window
+Sorts playfield dropdown on journal window
