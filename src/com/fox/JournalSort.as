@@ -28,12 +28,16 @@ class com.fox.JournalSort {
 			}
 			var f = function() {
 				arguments.callee.base.apply(this, arguments);
+				var selected = this.m_PlayfieldNames[this.m_PlayfieldIndexSelected];
 				var first = this.m_PlayfieldNames.shift();
 				this.m_PlayfieldNames.sortOn("name");
 				this.m_PlayfieldNames.unshift(first);
 				this.m_PlayfieldDropdown.dataProvider = this.m_PlayfieldNames;
 				this.m_PlayfieldDropdown.rowCount = this.m_PlayfieldNames.length;
-				this.m_PlayfieldDropdown.selectedIndex = this.m_PlayfieldIndexSelected;
+				for (var i = 0; i < this.m_PlayfieldNames; i++) {
+					if ( this.m_PlayfieldName[i] == selected) this.m_PlayfieldDropdown.selectedIndex = i;
+				}
+				
 			};
 			f.base = _global.GUI.MissionJournal.JournalWindow.prototype.UpdateMissionDropdownBoxes;
 			_global.GUI.MissionJournal.JournalWindow.prototype.UpdateMissionDropdownBoxes = f;
